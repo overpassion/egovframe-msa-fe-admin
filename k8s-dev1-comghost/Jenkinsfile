@@ -35,7 +35,7 @@ podTemplate(
             container("docker") {
                 withCredentials([usernamePassword(credentialsId: "${dockerhubCredentialsId}", passwordVariable: "password", usernameVariable: "username")]) {
                     sh "docker login -u $username -p $password"
-                    sh "docker build -f DockerfileK8s -t ${dockerImage}:${dockerImageTag} ."
+                    sh "docker build -f ./k8s-dev1-comghost/DockerfileK8s -t ${dockerImage}:${dockerImageTag} ."
                     sh "docker push ${dockerImage}:${dockerImageTag}"
                 }
             }
